@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Health Tracker
+    </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app">
+        <h1>Health Tracker</h1>
+        <h3>Track Today, Thrive Tomorrow.</h3>
+        <div class="inputs">
+            <div>
+                <label for="name">Name</label>
+                <input id="name" type="text">
+            </div>
+            <div>
+                <label for="age">Age</label>
+                <input id="age" type="number">
+            </div>
+            <div>
+                <label for="gender">Gender</label>
+                <select id="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+
+            <div>
+                <label for="distance">Distance Traveled (in km)</label>
+                <input id="distance" type="number">
+            </div>
+
+            <div>
+                <label for="exercise">Exercise Duration (in min)</label>
+                <input id="exercise" type="number">
+            </div>
+
+            <div>
+                <label for="water">Water Intake (in ml)</label>
+                <input id="water" type="number">
+            </div>
+            <div>
+                <label for="bedtime">Bedtime</label>
+                <input id="bedtime" type="time">
+            </div>
+            <div>
+                <label for="wakeTime">Wake-Up Time</label>
+                <input id="wakeTime" type="time">
+            </div>
+            <div>
+                <label for="mood">Mood</label>
+                <select id="mood">
+                    <option value="Happy">Happy</option>
+                    <option value="Stressed">Stressed</option>
+                    <option value="Anxious">Anxious</option>
+                    <option value="Calm">Calm</option>
+                </select>
+            </div>
+            <div>
+                <label for="heartRate">Resting Heart Rate (in bpm)</label>
+                <input id="heartRate" type="number">
+            </div>
+            <div>
+                <label for="bloodPressure">Blood Pressure (in mmHg)</label>
+                <input id="bloodPressure" type="text" placeholder="blood Pressure">
+            </div>
+            <div>
+                <label for="bloodSugar">Blood Sugar Level (in mg/dL)</label>
+                <input id="bloodSugar" type="number">
+            </div>
+        </div>
+        <button id="submit">Submit</button>
+
+    </div>
+
+    </div>
+
+    <div class="container">
+        <form class="form">
+            <button>-</button>
+            <h3 id="h2">Your Results</h3>
+            <div class="data">
+
+                <p id="nalo">Name:</p>
+                <p id="age1">Age:</p>
+                <p id="gender1">Gender:</p>
+
+                <div id="disease">
+                    <h3>Potential Health Risks</h3>
+                    <ul class="listob">
+                    </ul>
+                </div>
+            </div>
+            <div class="remedies">
+                <h2>Follow these steps to reduce your risk</h2>
+                <ul class="listof"></ul>
+            </div>
+        </form>
+        <div class="save">
+            <p>Name:</p>
+        </div>
+        <script src="script.js"></script>
+</body>
+
+</html>
