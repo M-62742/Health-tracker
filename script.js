@@ -171,11 +171,6 @@ function displayName() {
     appendListItems(".listof", stepsToOvercomeE)
   }
 
-
-
-
-
-
   let waterVal = document.getElementById('water').value;
   waterVal = parseFloat(waterVal);
 
@@ -221,8 +216,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.getElementById("submit").addEventListener("click", () => {
 
-    console.log("Button clicked");
-
     let form = document.getElementsByClassName("form")[0];
 
     let formva = document.querySelector(".inputs")
@@ -254,16 +247,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
 })
 
-document.getElementById('savePDF').addEventListener('click', function () {
-  const { jsPDF } = window.jspdf;
+document.getElementById('savePDF').addEventListener('click', async function () {
+  const form = document.querySelector("#res");
+  
+  try {
+    document.querySelector(".top").style.opacity = "0"
 
-  const doc = new jsPDF();
-  html2canvas(document.getElementById('res'), {
-    useCORS: true,
-    scale: 2,
-    logging: true,
-  }).then(function (canvas) {
 
-    doc.save("form_data.pdf");
-  });
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF('p', 'pt', 'a4');
+    const div = document.getElementById("res");
+    const canvas = await html2canvas(div, { scale: 2 });
+    const imgData = canvas.toDataURL("image/png");
+    const imgWidth = 595.28;
+    const pageHeight = 841.89;
+    const imgHeight = canvas.height * imgWidth / canvas.width;
+    let heightLeft = imgHeight;
+    let position = 0;
+
+    doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+    heightLeft -= pageHeight;
+
+    while (heightLeft > 0) {
+      position = heightLeft - imgHeight;
+      doc.addPage();
+      doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+    }
+
+    doc.save("results.pdf");
+  } catch (error) {
+    console.error("Error generating PDF:", error);
+  } finally {
+    document.querySelector(".top").style.opacity = "1"
+  }
 });
