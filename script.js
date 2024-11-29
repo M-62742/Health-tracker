@@ -197,23 +197,91 @@ function displayName() {
     appendListItems(".listof", stepsToOvercomeB);
 
   }
+  scrollToElementById("res");
 
 }
+
+function scrollToElementById(elementId) {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start' // Optional: defines where the element should align in the viewport (start, center, end)
+    });
+  } else {
+    console.log("Element with id '" + elementId + "' not found.");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
 
 document.getElementById("submit").addEventListener("click", () => {
   
   console.log("Button clicked");
 
   let form = document.getElementsByClassName("form")[0];
-  form.style.display = "block";
-  form.style.height = "auto";
-  form.style.justifyContent = "spacearound";
 
-  displayName();
-  let btn = document.querySelector(".form button");
-  btn.addEventListener("click", () => {
-    form.style.display = "none";
-    form.reset();
-    console.log("Hello clicked");
+  let formva = document.querySelector(".inputs")
+  // form.style.display = "block";
+  //   form.style.height = "auto";
+  //   form.style.justifyContent = "spacearound";
+  //   displayName();
+
+  if (validateForm(formva)) {
+    form.style.display = "block";
+    form.style.height = "auto";
+    form.style.justifyContent = "spacearound";
+    displayName();
+  }
+  // let btn = document.querySelector(".can");
+  // btn.addEventListener("click", () => {
+  //   form.style.display = "none";
+  //   form.reset();
+  //   console.log("Hello clicked");
+  // });
+});
+
+function validateForm(form) {
+  let inputs = form.querySelectorAll("input, select"); // Get all input and select fields
+  for (let input of inputs) {
+    // Check if the field is required and empty
+    if (input.required && input.value.trim() === "") {
+      alert("Please fill out all the fields.");
+      return false; // Return false if validation fails
+    }
+  }
+  return true; // Return true if all required fields are filled
+}
+
+})
+
+document.getElementById('savePDF').addEventListener('click', function() {
+  const { jsPDF } = window.jspdf;
+
+  const doc = new jsPDF();
+  html2canvas(document.getElementById('res'), {
+    useCORS: true, // Allow CORS for images
+    scale: 2,      // Higher scale for better quality
+    logging: true, // Optional, logs info for debugging
+  }).then(function(canvas) {
+    const imgData = canvas.toDataURL('image/png');
+    const imgWidth = 297; // A4 width in landscape (mm)
+    const imgHeight = (canvas.height * imgWidth) / canvas.width; // Proportional height
+    let position = 10;
+
+    // Add the first page with the content
+    doc.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+
+    // Check if the content exceeds one page (height is too large)
+    if (imgHeight > 287) {  // A4 height in landscape minus some padding
+      let totalPages = Math.ceil(imgHeight / 287); // Calculate number of pages
+      for (let i = 1; i < totalPages; i++) {
+        doc.addPage('a4', 'landscape');
+        doc.addImage(imgData, 'PNG', 10, position - (287 * i), imgWidth, imgHeight);
+      }
+    }
+
+    // Save the generated PDF
+    doc.save("form_data.pdf");
   });
 });

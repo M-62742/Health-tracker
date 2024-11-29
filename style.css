@@ -7,6 +7,8 @@
    font-family:'Times New Roman', Times, serif;
    font-weight: 700;
    user-select: none;
+   
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -135,16 +137,20 @@ button {
     flex-direction: column;
     gap: 10px;
 }
-.form button{
-    width: 30px;
-    height: 30px;
+.can{
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background-color: #f800004c;
+    background-color: #8c0000d9;
     color: #10b981;
-    float: right;
-    font-size: 17px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5px;
+    align-items: center;
+    font-size: 19px;
     cursor:pointer;
-
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
 }
 
 
@@ -194,6 +200,25 @@ li{
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: none;
+}
+
+.top{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+#savePDF {
+    width: 40px;
+    background: rgba(0, 255, 115, 0.543);
+    height: 40px;
+    border-radius: 50%;
+    font-size: 12px;
+    margin-right: 20px;
+    font-family:Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media screen and (max-width : 500px){
