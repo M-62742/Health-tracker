@@ -242,6 +242,32 @@ document.addEventListener("DOMContentLoaded", function () {
         return false;
       }
     }
+    let heartval = document.getElementById("heartRate").value;
+    let waterVal = document.getElementById('water').value;
+    let distanceValue = document.getElementById("distance").value;
+    
+  let bp = document.getElementById('bloodPressure').value;
+    console.log(heartval)
+  
+    // Validate heart rate limit
+    if (heartval < 20 || heartval > 250) {
+      alert("You are exceeding the heart rate limit.");
+      return false;
+    }
+  
+    // Validate blood pressure limit
+    if (bp === "" || bp === "0" || bp > 179) {
+      alert("You are exceeding the blood pressure limit.");
+      return false;
+    }
+    if (waterVal > 7000) {
+      alert("You are exceeding the water limit.");
+      return false;
+  } 
+  if (distanceValue >= 38 && distanceValue <= 51){
+    alert("You are exceeding the  distance limit");
+  }
+
     return true;
   }
 
