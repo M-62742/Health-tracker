@@ -167,6 +167,7 @@ li{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 30px;
     color: #ff0000cf;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.534);
 }
 
 .remedies {
@@ -180,6 +181,9 @@ li{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 30px;
     color: #10b96a;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.534);
+    width: 100%;
+    text-align: center;
 }
 
 
@@ -225,10 +229,9 @@ li{
 }
 
 p{
-    background: linear-gradient(to right, #0ea4e9a9, #10b9818f);
     padding: 3px;
-    border-radius: 2px;
-    text-align: center;
+    color: #ffffff;
+    font-weight: 900;
 }
 @media screen and (max-width : 500px){
     .listob, .listof{
