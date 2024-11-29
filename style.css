@@ -241,4 +241,7 @@ p{
         padding-left: 40px;
         padding-right: 40px;
     }
+    label{
+        font-size: 0.6rem;
+    }
 }
